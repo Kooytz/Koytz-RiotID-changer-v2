@@ -47,7 +47,6 @@
             FontFamily="Mark Pro"
             FontWeight="Medium"
             FontSize="12"
-            
             HorizontalAlignment="Left" 
             Height="40" 
             Margin="54,95,0,0" 
@@ -81,27 +80,83 @@
             Width="41"
         />
 
-        <TextBox 
+        <TextBox
             x:Name="NewGameName"
             Text="GAME NAME"
+            FontFamily="Mark Pro"
+            FontSize="11"
+            FontWeight="Bold"
             TextWrapping="NoWrap"
             TextChanged="NewGameName_TextChanged"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
-            Padding="20,0,0,0"
+            Padding="17,0,0,0"
+            Foreground="#d253e5"
             
-            Background="pink"
-            
-            
-            BorderThickness="2"
+            Height="65"
+            Width="207"
+            Margin="453,42,0,0" 
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Height="63"
-            Width="205"
-            Margin="453,43,0,0"
-           />
+            VerticalAlignment="Top">
 
-        <!--Image Margin="-6,-7,-6,-7" Source="/Image1.png" Stretch="Fill"/-->
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border 
+                                    CornerRadius="4" 
+                                    BorderBrush="#472748" 
+                                    BorderThickness="2" 
+                                    Background="#382738">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <TextBox
+             x:Name="NewTagLine"
+             Text="TAGLINE"
+             FontFamily="Mark Pro"
+             FontSize="11"
+             FontWeight="Bold"
+             TextWrapping="NoWrap"
+             TextChanged="NewTagLine_TextChanged"
+             VerticalContentAlignment="Center"
+             HorizontalContentAlignment="Left"
+             Padding="17,0,0,0"
+             Foreground="#d253e5"
+
+             Height="65"
+             Width="207"
+             Margin="673,42,0,0" 
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top">
+
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border 
+                                     CornerRadius="4" 
+                                     BorderBrush="#472748" 
+                                     BorderThickness="2" 
+                                     Background="#382738">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <!--Image Margin="-6,-7,-6,-7" Source="/Image1.png" Stretch="Fill"></Image-->
 
     </Grid>
 </Window>

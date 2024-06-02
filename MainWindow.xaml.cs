@@ -22,8 +22,11 @@ namespace Koytz_RiotID_changer_v2 {
             InitializeComponent();
         }
 
-        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
+
+        }
+
+        private void NewTagLine_TextChanged(object sender, TextChangedEventArgs e) {
 
         }
     }
