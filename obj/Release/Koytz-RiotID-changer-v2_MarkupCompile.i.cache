@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\
+D:\GitHub\Koytz-RiotID-changer-v2\obj\Release\
 Koytz_RiotID_changer_v2
 none
 false
-DEBUG;TRACE
+TRACE
 D:\GitHub\Koytz-RiotID-changer-v2\App.xaml
 1219584333
 
-51579654133
+61017511550
 13-38814620
 MainWindow.xaml;
 
