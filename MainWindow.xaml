@@ -5,97 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Koytz_RiotID_changer_v2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="290" Width="933">
+        Title="MainWindow" Height="350" Width="1121"
+        ResizeMode="CanMinimize"
+        
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
 
     <Grid
         
-        Margin="0,-10,0,-6">
+        Margin="0,-10,0,-6" Background="#292727" MouseDown="Grid_MouseDown">
 
         <Rectangle 
-            HorizontalAlignment="Left" 
-            Height="275" 
-            Margin="404,10,0,0" 
-            Stroke="#292727"
-            Fill="#292727" 
-            VerticalAlignment="Top" 
-            Width="540"
-        />
-
-        <Rectangle 
-            Width="405" 
-            VerticalAlignment="Top" 
+            Width="483" 
+            VerticalAlignment="Center" 
             Stroke="#211e1f" 
-            Height="276" 
+            Height="366" 
             HorizontalAlignment="Left" 
-            Fill="#211e1f" 
-            Margin="0,9,0,0"
+            Fill="#211e1f"
         />
 
         <TextBlock
             FontFamily="Mark Pro"
-            FontSize="27"
+            FontSize="32"
             FontWeight="Bold"
             HorizontalAlignment="Left" 
-            Margin="53,40,0,0" 
+            Margin="65,52,0,0" 
             TextWrapping="Wrap" 
             Text="Riot ID" 
-            Foreground="white"
+            Foreground="#f0f0f0"
             VerticalAlignment="Top"
         />
 
         <TextBlock
             FontFamily="Mark Pro"
             FontWeight="Medium"
-            FontSize="12"
+            FontSize="15"
             HorizontalAlignment="Left" 
             Height="40" 
-            Margin="54,95,0,0" 
+            Margin="65,111,0,0" 
             TextWrapping="Wrap" 
             Text="Seu Riot ID é usado pelos jogadores para encontrar você no painel social de jogos da Riot."
-            Foreground="#b0b0b0"
+            Foreground="#c6c6c6"
             VerticalAlignment="Top" 
-            Width="301"
+            Width="354"
         />
 
         <TextBlock
             FontFamily="Mark Pro"
-            FontSize="9"
+            FontSize="11"
             FontWeight="Bold"
             HorizontalAlignment="Left" 
             Height="14" 
-            Margin="98,226,0,0" 
+            Margin="121,268,0,0" 
             TextWrapping="Wrap" 
             Text="RIOT ID PODE SER ALTERADO A CADA 90 DIAS"
             Foreground="white"
             VerticalAlignment="Top" 
-            Width="219"
-        />
-
-        <Image 
-            HorizontalAlignment="Left" 
-            Height="48" 
-            Margin="51,210,0,0" 
-            Source="/warning.png" 
-            VerticalAlignment="Top" 
-            Width="41"
+            Width="266"
         />
 
         <TextBox
             x:Name="NewGameName"
             Text="GAME NAME"
             FontFamily="Mark Pro"
-            FontSize="11"
+            FontSize="13"
             FontWeight="Bold"
             TextWrapping="NoWrap"
             TextChanged="NewGameName_TextChanged"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
             Padding="17,0,0,0"
-            Foreground="#d253e5"
+            Foreground="#e74ff5"
             
-            Height="65"
-            Width="207"
-            Margin="453,42,0,0" 
+            Height="74"
+            Width="248"
+            Margin="546,54,0,0" 
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
 
@@ -122,18 +107,18 @@
              x:Name="NewTagLine"
              Text="TAGLINE"
              FontFamily="Mark Pro"
-             FontSize="11"
+             FontSize="13"
              FontWeight="Bold"
              TextWrapping="NoWrap"
              TextChanged="NewTagLine_TextChanged"
              VerticalContentAlignment="Center"
              HorizontalContentAlignment="Left"
              Padding="17,0,0,0"
-             Foreground="#d253e5"
+             Foreground="#e74ff5"
 
-             Height="65"
-             Width="207"
-             Margin="673,42,0,0" 
+             Height="74"
+             Width="248"
+             Margin="810,54,0,0" 
              HorizontalAlignment="Left"
              VerticalAlignment="Top">
 
@@ -156,7 +141,53 @@
             </TextBox.Style>
         </TextBox>
 
-        <!--Image Margin="-6,-7,-6,-7" Source="/Image1.png" Stretch="Fill"></Image-->
+        <Image 
+            Margin="64,246,1009,62" 
+            Source="/warning.png" 
+            Stretch="Fill"
+        />
+
+        <Button 
+            Content="_"
+            Width="30" 
+            Height="20"
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top"
+            Margin="0,10,29,0"
+            Click="MinimizeButton_Click">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#808080"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4b4b4b"/>
+                            <Setter Property="Foreground" Value="#808080"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <!-- Botão Fechar -->
+        <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Click="CloseButton_Click"/>
+
+        <!--Image Margin="2,0,-2,16" Source="/Image1.png" Stretch="Fill"/-->
 
     </Grid>
 </Window>
