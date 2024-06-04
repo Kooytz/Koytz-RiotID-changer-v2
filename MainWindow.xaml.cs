@@ -14,36 +14,61 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Koytz_RiotID_changer_v2 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e) {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e) {
             this.WindowState = WindowState.Minimized;
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void CloseButton_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
 
-        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
+        private void RemoveText(object sender, RoutedEventArgs e) {
+            if (NewGameName.Text == "GAME NAME") {
+                NewGameName.Text = "";
+                NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
+            }
+        }
 
+        private void AddText(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(NewGameName.Text)) {
+                NewGameName.Text = "GAME NAME";
+                NewGameName.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void SaveChangesButton_Click(object sender, RoutedEventArgs e) {
+        }
+
+        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
         }
 
         private void NewTagLine_TextChanged(object sender, TextChangedEventArgs e) {
-
         }
     }
 }

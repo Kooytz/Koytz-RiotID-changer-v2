@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Koytz_RiotID_changer_v2"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="1121"
@@ -16,8 +17,8 @@
         
         Margin="0,-10,0,-6" Background="#292727" MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="978*"/>
-            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="143"/>
         </Grid.ColumnDefinitions>
 
         <Rectangle 
@@ -71,38 +72,50 @@
 
         <TextBox
             x:Name="NewGameName"
-            Text="GAME NAME"
             FontFamily="Mark Pro"
-            FontSize="13"
+            FontSize="14"
             FontWeight="Bold"
             TextWrapping="NoWrap"
             TextChanged="NewGameName_TextChanged"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
             Padding="17,0,0,0"
-            Foreground="#e74ff5"
-            
             Height="74"
             Width="248"
             Margin="546,54,0,0" 
             HorizontalAlignment="Left"
-            VerticalAlignment="Top">
+            VerticalAlignment="Top"
+            GotFocus="RemoveText"
+            LostFocus="AddText">
 
             <TextBox.Style>
                 <Style TargetType="TextBox">
+                    <Setter Property="Text" Value="GAME NAME"/>
+                    <Setter Property="Foreground" Value="#e74ff5"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="TextBox">
-                                <Border 
-                                    CornerRadius="4" 
-                                    BorderBrush="#472748" 
-                                    BorderThickness="2" 
-                                    Background="#382738">
+                                <Border
+                            Name="Border"
+                            CornerRadius="4" 
+                            BorderBrush="#472748" 
+                            BorderThickness="2" 
+                            Background="#382738">
                                     <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                                 </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Text" Value=""/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </TextBox.Style>
         </TextBox>
@@ -111,14 +124,13 @@
              x:Name="NewTagLine"
              Text="TAGLINE"
              FontFamily="Mark Pro"
-             FontSize="13"
+             FontSize="14"
              FontWeight="Bold"
              TextWrapping="NoWrap"
              TextChanged="NewTagLine_TextChanged"
              VerticalContentAlignment="Center"
              HorizontalContentAlignment="Left"
              Padding="17,0,0,0"
-             Foreground="#e74ff5"
 
              Height="74"
              Width="248"
@@ -128,16 +140,23 @@
 
             <TextBox.Style>
                 <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="#e74ff5"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="TextBox">
-                                <Border 
-                                     CornerRadius="4" 
-                                     BorderBrush="#472748" 
-                                     BorderThickness="2" 
-                                     Background="#382738">
+                                <Border
+                                    Name="Border"
+                                    CornerRadius="4" 
+                                    BorderBrush="#472748" 
+                                    BorderThickness="2" 
+                                    Background="#382738">
                                     <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                                 </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -168,9 +187,6 @@
                     <Setter Property="Foreground" Value="#808080"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Setter Property="BorderThickness" Value="0"/>
-                    <!--Setter Property="Padding" Value="0,0,0,0"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/-->
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
@@ -199,7 +215,8 @@
             VerticalAlignment="Top"
             Margin="0,10,0,0"
             Click="CloseButton_Click" 
-            Grid.Column="1" RenderTransformOrigin="0.5,0.812">
+            Grid.Column="1" 
+            RenderTransformOrigin="0.5,0.812">
 
             <Button.Style>
                 <Style TargetType="Button">
@@ -226,7 +243,86 @@
             </Button.Style>
         </Button>
 
-        <!--Image Margin="2,0,-2,16" Source="/Image1.png" Stretch="Fill"/-->
+        <Button 
+            Content="CANCELAR"
+            FontFamily="Mark Pro"
+            FontWeight="Bold"
+            FontSize="16"
+            Click="CloseButton_Click"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Margin="546,254,0,0"
+            Height="42"
+            Width="248">
 
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#333131"/>
+                    <Setter Property="Foreground" Value="#f0f0f0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="5">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#383636"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button 
+            Content="SALVAR ALTERAÇÕES"
+            FontFamily="Mark Pro"
+            FontWeight="Bold"
+            FontSize="16"
+            Click="SaveChangesButton_Click"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Margin="810,254,0,0"
+            Height="42"
+            Width="248" 
+            Grid.ColumnSpan="2">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#525252"/>
+                    <Setter Property="BorderBrush" Value="#333131"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+        
     </Grid>
 </Window>
