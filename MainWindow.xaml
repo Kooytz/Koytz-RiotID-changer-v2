@@ -76,7 +76,6 @@
             FontSize="14"
             FontWeight="Bold"
             TextWrapping="NoWrap"
-            TextChanged="NewGameName_TextChanged"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
             Padding="17,0,0,0"
@@ -86,36 +85,48 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             GotFocus="RemoveText"
-            LostFocus="AddText">
+            LostFocus="AddText"
+            TextChanged="NewGameName_TextChanged">
 
             <TextBox.Style>
                 <Style TargetType="TextBox">
-                    <Setter Property="Text" Value="GAME NAME"/>
-                    <Setter Property="Foreground" Value="#e74ff5"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="TextBox">
                                 <Border
-                            Name="Border"
-                            CornerRadius="4" 
-                            BorderBrush="#472748" 
-                            BorderThickness="2" 
-                            Background="#382738">
-                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                    x:Name="Border"
+                                    CornerRadius="4" 
+                                    BorderBrush="#472748" 
+                                    BorderThickness="2" 
+                                    Background="#382738">
+                                    <Grid>
+                                        <TextBlock
+                                            x:Name="Placeholder"
+                                            Text="GAME NAME"
+                                            Foreground="#e74ff5"
+                                            IsHitTestVisible="False"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="17,0,0,0"
+                                            Visibility="Collapsed"
+                                        />
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                    </Grid>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsKeyboardFocused" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="Transparent"/>
                                     </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Text" Value=""/>
-                        </Trigger>
-                    </Style.Triggers>
                 </Style>
             </TextBox.Style>
         </TextBox>

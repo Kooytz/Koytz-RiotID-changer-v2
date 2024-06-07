@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+using System.Diagnostics;
 
 namespace Koytz_RiotID_changer_v2 {
     public partial class MainWindow : Window {
@@ -42,7 +35,31 @@ namespace Koytz_RiotID_changer_v2 {
         private void AddText(object sender, RoutedEventArgs e) {
             if (string.IsNullOrWhiteSpace(NewGameName.Text)) {
                 NewGameName.Text = "GAME NAME";
-                NewGameName.Foreground = new SolidColorBrush(Colors.Gray);
+                NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
+            }
+        }
+
+        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
+            NewGameName.Foreground = new SolidColorBrush(Colors.White);
+
+            ControlTemplate template = NewGameName.Template;
+
+            if (template == null) return;
+
+            Border border = template.FindName("Border", NewGameName) as Border;
+
+            if (border != null) {
+                if (NewGameName.Text.Length >= 3) {
+                    border.BorderBrush = new SolidColorBrush(Colors.White);
+                    border.Background = new SolidColorBrush(Colors.Transparent);
+                } else {
+                    border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#472748"));
+
+                    // aqui vai entrar uma variável que vai servir pra ser utilizada quando clica fora, vai reutilizar o que está aí abaixo basicamente.
+                    // última modificação foi aqui 07/06/2024.
+
+                    //border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
+                }
             }
         }
 
@@ -63,9 +80,6 @@ namespace Koytz_RiotID_changer_v2 {
 
 
         private void SaveChangesButton_Click(object sender, RoutedEventArgs e) {
-        }
-
-        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
         }
 
         private void NewTagLine_TextChanged(object sender, TextChangedEventArgs e) {
