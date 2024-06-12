@@ -3,13 +3,53 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
-using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Koytz_RiotID_changer_v2 {
     public partial class MainWindow : Window {
+
+        private DispatcherTimer focusTimer;
+        private bool isGameNameFocused;
+        //private bool isGameNameFocused; tagline
+
         public MainWindow() {
             InitializeComponent();
+            FocusTimer();
+        }
+
+        private void FocusTimer() {
+            focusTimer = new DispatcherTimer();
+            focusTimer.Interval = TimeSpan.FromMilliseconds(100); // Intervalo de 100ms
+            focusTimer.Tick += FocusThread;
+            focusTimer.Start();
+        }
+
+        private void FocusThread(object sender, EventArgs e) {
+            isGameNameFocused = NewGameName.IsKeyboardFocused;
+            ControlTemplate GameNameTemplate = NewGameName.Template;
+
+            if (GameNameTemplate == null) return;
+
+            Border border = GameNameTemplate.FindName("Border", NewGameName) as Border;
+
+            if (border != null) {
+                if (isGameNameFocused) {
+                    border.Background = new SolidColorBrush(Colors.Transparent);
+                } else {
+                    if (NewGameName.Text.Length < 3) {
+                        border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
+                    }
+                }
+            }
+
+            // TERMINEI NESSA CONDICIONAL DE CIMA
+            // ESTOU TENTANDO DESCOBRIR COMO TIRAR O GAME NAME SEMPRE QUE CLICA NA BOX, OU SEJA, ESTÁ COM O FOCUS LIGADO
+
+            // AO TERMINAR, VOLTAR AS CORREÇÕES DA BORDA
+
+
+
+            //TagLine Focus here;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e) {
@@ -25,7 +65,7 @@ namespace Koytz_RiotID_changer_v2 {
             this.Close();
         }
 
-        private void RemoveText(object sender, RoutedEventArgs e) {
+        /*private void RemoveText(object sender, RoutedEventArgs e) {
             if (NewGameName.Text == "GAME NAME") {
                 NewGameName.Text = "";
                 NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
@@ -37,11 +77,10 @@ namespace Koytz_RiotID_changer_v2 {
                 NewGameName.Text = "GAME NAME";
                 NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
             }
-        }
+        }*/
 
         private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
             NewGameName.Foreground = new SolidColorBrush(Colors.White);
-
             ControlTemplate template = NewGameName.Template;
 
             if (template == null) return;
@@ -51,13 +90,26 @@ namespace Koytz_RiotID_changer_v2 {
             if (border != null) {
                 if (NewGameName.Text.Length >= 3) {
                     border.BorderBrush = new SolidColorBrush(Colors.White);
-                    border.Background = new SolidColorBrush(Colors.Transparent);
+                    
+                    //if () {
+                    //} else {
+                        //border.BorderBrush = new SolidColorBrush(Colors.Transparent);
+                        //Console.WriteLine("False");
+                    //}
+
+
+
+
+
+
+
+                } else if (NewGameName.Text.Length < 3) {
+                    //border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#d953e5"));
+                    //border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
                 } else {
-                    border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#472748"));
+                    //border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#472748"));
 
                     // aqui vai entrar uma variável que vai servir pra ser utilizada quando clica fora, vai reutilizar o que está aí abaixo basicamente.
-                    // última modificação foi aqui 07/06/2024.
-
                     //border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
                 }
             }

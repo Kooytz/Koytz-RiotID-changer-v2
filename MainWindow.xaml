@@ -84,9 +84,11 @@
             Margin="546,54,0,0" 
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            GotFocus="RemoveText"
-            LostFocus="AddText"
             TextChanged="NewGameName_TextChanged">
+            
+            <!--GotFocus="RemoveText"
+            LostFocus="AddText"-->
+            
 
             <TextBox.Style>
                 <Style TargetType="TextBox">
@@ -116,6 +118,7 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsKeyboardFocused" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="#d953e5"/>
                                     </Trigger>
                                     <Trigger Property="Text" Value="">
                                         <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
