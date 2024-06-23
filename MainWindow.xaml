@@ -83,13 +83,8 @@
             Width="248"
             Margin="546,54,0,0" 
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            TextChanged="NewGameName_TextChanged">
+            VerticalAlignment="Top">
             
-            <!--GotFocus="RemoveText"
-            LostFocus="AddText"-->
-            
-
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Template">

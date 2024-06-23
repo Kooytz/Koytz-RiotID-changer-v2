@@ -10,7 +10,7 @@ namespace Koytz_RiotID_changer_v2 {
 
         private DispatcherTimer focusTimer;
         private bool isGameNameFocused;
-        //private bool isGameNameFocused; tagline
+        //private bool isTagLineFocused; tagline
 
         public MainWindow() {
             InitializeComponent();
@@ -19,33 +19,41 @@ namespace Koytz_RiotID_changer_v2 {
 
         private void FocusTimer() {
             focusTimer = new DispatcherTimer();
-            focusTimer.Interval = TimeSpan.FromMilliseconds(100); // Intervalo de 100ms
+            focusTimer.Interval = TimeSpan.FromMilliseconds(50);
             focusTimer.Tick += FocusThread;
             focusTimer.Start();
         }
 
         private void FocusThread(object sender, EventArgs e) {
             isGameNameFocused = NewGameName.IsKeyboardFocused;
-            ControlTemplate GameNameTemplate = NewGameName.Template;
+            ControlTemplate textBoxTemplate = NewGameName.Template;
 
-            if (GameNameTemplate == null) return;
+            if (textBoxTemplate == null) return;
 
-            Border border = GameNameTemplate.FindName("Border", NewGameName) as Border;
+            Border border = textBoxTemplate.FindName("Border", NewGameName) as Border;
+            TextBlock placeholderTextBlock = textBoxTemplate.FindName("Placeholder", NewGameName) as TextBlock;
 
             if (border != null) {
                 if (isGameNameFocused) {
+                    Console.WriteLine("está focado!");
                     border.Background = new SolidColorBrush(Colors.Transparent);
+
+                    if (NewGameName.Text.Length == 0) {
+                        placeholderTextBlock.Visibility = Visibility.Collapsed;
+                    }
+
                 } else {
                     if (NewGameName.Text.Length < 3) {
                         border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
+                    } 
+                    
+                    if (NewGameName.Text.Length == 0) {
+                        placeholderTextBlock.Visibility = Visibility.Visible;
                     }
                 }
             }
 
-            // TERMINEI NESSA CONDICIONAL DE CIMA
-            // ESTOU TENTANDO DESCOBRIR COMO TIRAR O GAME NAME SEMPRE QUE CLICA NA BOX, OU SEJA, ESTÁ COM O FOCUS LIGADO
-
-            // AO TERMINAR, VOLTAR AS CORREÇÕES DA BORDA
+            // AO TERMINAR, VOLTAR AS CORREÇÕES DA BORDA -- LEMBRAR DE PEGAR DO MÉTODO LÁ NO BLOCO DE NOTAS CHAMADO NewGameName_TextChanged
 
 
 
@@ -64,63 +72,6 @@ namespace Koytz_RiotID_changer_v2 {
         private void CloseButton_Click(object sender, RoutedEventArgs e) {
             this.Close();
         }
-
-        /*private void RemoveText(object sender, RoutedEventArgs e) {
-            if (NewGameName.Text == "GAME NAME") {
-                NewGameName.Text = "";
-                NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
-            }
-        }
-
-        private void AddText(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrWhiteSpace(NewGameName.Text)) {
-                NewGameName.Text = "GAME NAME";
-                NewGameName.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e74ff5"));
-            }
-        }*/
-
-        private void NewGameName_TextChanged(object sender, TextChangedEventArgs e) {
-            NewGameName.Foreground = new SolidColorBrush(Colors.White);
-            ControlTemplate template = NewGameName.Template;
-
-            if (template == null) return;
-
-            Border border = template.FindName("Border", NewGameName) as Border;
-
-            if (border != null) {
-                if (NewGameName.Text.Length >= 3) {
-                    border.BorderBrush = new SolidColorBrush(Colors.White);
-                    
-                    //if () {
-                    //} else {
-                        //border.BorderBrush = new SolidColorBrush(Colors.Transparent);
-                        //Console.WriteLine("False");
-                    //}
-
-
-
-
-
-
-
-                } else if (NewGameName.Text.Length < 3) {
-                    //border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#d953e5"));
-                    //border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
-                } else {
-                    //border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#472748"));
-
-                    // aqui vai entrar uma variável que vai servir pra ser utilizada quando clica fora, vai reutilizar o que está aí abaixo basicamente.
-                    //border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
-                }
-            }
-        }
-
-
-
-
-
-
-
 
 
 
