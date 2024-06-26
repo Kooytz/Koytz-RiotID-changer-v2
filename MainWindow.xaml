@@ -84,7 +84,7 @@
             Margin="546,54,0,0" 
             HorizontalAlignment="Left"
             VerticalAlignment="Top">
-            
+
             <TextBox.Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Template">
@@ -125,6 +125,7 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="CaretBrush" Value="White"/>
                 </Style>
             </TextBox.Style>
         </TextBox>
@@ -331,7 +332,21 @@
                 </Style>
             </Button.Style>
         </Button>
-        
-        
+
+        <TextBlock
+            FontFamily="Mark Pro"
+            FontSize="10.5"
+            FontWeight="Bold"
+            HorizontalAlignment="Left" 
+            Height="12" 
+            Margin="565,67,0,0" 
+            TextWrapping="Wrap" 
+            Text="GAME NAME"
+            Foreground="#b8b8b8"
+            VerticalAlignment="Top"
+            />
+
+
+
     </Grid>
 </Window>

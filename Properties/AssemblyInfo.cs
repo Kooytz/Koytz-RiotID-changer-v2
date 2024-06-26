@@ -8,11 +8,11 @@ using System.Windows;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("Koytz-RiotID-changer-v2")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Altere de maneira rápida e prática seu Riot ID através deste software.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("gho$tware")]
 [assembly: AssemblyProduct("Koytz-RiotID-changer-v2")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyCopyright("gho$tware ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

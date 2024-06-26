@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|D:\\GitHub\\Koytz-RiotID-changer-v2\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|d:\\github\\koytz-riotid-changer-v2\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|solutionrelative:mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|D:\\GitHub\\Koytz-RiotID-changer-v2\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C2F5143D-4D0E-40A5-A475-CDEE52777312}|Koytz-RiotID-changer-v2.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,15 +26,16 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "D:\\GitHub\\Koytz-RiotID-changer-v2\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "D:\\GitHub\\Koytz-RiotID-changer-v2\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAUwDcAAABrAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAwwBQAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T05:04:11.07Z"
+              "WhenOpened": "2024-06-26T19:24:01.17Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,7 +46,7 @@
               "ToolTip": "D:\\GitHub\\Koytz-RiotID-changer-v2\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-04T02:38:21.974Z",
+              "WhenOpened": "2024-06-26T19:56:07.573Z",
               "EditorCaption": ""
             }
           ]
@@ -56,7 +57,7 @@
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "a19edde8-6903-45c7-96d2-ef2e7f5aa6c8",
+        "Id": "1bd2b9ef-ce12-406c-a3b3-8610b4c79f2f",
         "Display": 1,
         "X": 0,
         "Y": 55,
@@ -71,15 +72,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\GitHub\\Koytz-RiotID-changer-v2\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "D:\\GitHub\\Koytz-RiotID-changer-v2\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAlwFYAAAAMAAAA",
+              "ViewState": "AQIAADsBAAAAAAAAAAAAAFoBAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-23T06:26:42.831Z",
+              "WhenOpened": "2024-06-26T19:25:37.428Z",
               "EditorCaption": ""
             }
           ]

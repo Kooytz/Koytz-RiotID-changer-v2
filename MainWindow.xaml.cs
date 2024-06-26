@@ -34,26 +34,36 @@ namespace Koytz_RiotID_changer_v2 {
             TextBlock placeholderTextBlock = textBoxTemplate.FindName("Placeholder", NewGameName) as TextBlock;
 
             if (border != null) {
+                if (placeholderTextBlock.Visibility == Visibility.Collapsed) {
+                    NewGameName.Foreground = new SolidColorBrush(Colors.White);
+                }
+
                 if (isGameNameFocused) {
-                    Console.WriteLine("está focado!");
                     border.Background = new SolidColorBrush(Colors.Transparent);
 
                     if (NewGameName.Text.Length == 0) {
                         placeholderTextBlock.Visibility = Visibility.Collapsed;
                     }
 
+                    if (NewGameName.Text.Length >= 3) {
+                        border.BorderBrush = new SolidColorBrush(Colors.White);
+                    } else {
+                        border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#d953e5"));
+                    }
                 } else {
-                    if (NewGameName.Text.Length < 3) {
+                    if (NewGameName.Text.Length <= 2) {
                         border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#382738"));
-                    } 
+                        border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#472748"));
+                    } else {
+                        border.BorderBrush = new SolidColorBrush(Colors.Transparent);
+                        border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#383636"));
+                    }
                     
                     if (NewGameName.Text.Length == 0) {
                         placeholderTextBlock.Visibility = Visibility.Visible;
                     }
                 }
             }
-
-            // AO TERMINAR, VOLTAR AS CORREÇÕES DA BORDA -- LEMBRAR DE PEGAR DO MÉTODO LÁ NO BLOCO DE NOTAS CHAMADO NewGameName_TextChanged
 
 
 
