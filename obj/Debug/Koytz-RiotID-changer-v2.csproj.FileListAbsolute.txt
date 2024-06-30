@@ -1,11 +1,11 @@
-D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.exe.config
-D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.exe
-D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.pdb
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\Koytz-RiotID-changer-v2.csproj.AssemblyReference.cache
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\MainWindow.g.cs
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\App.g.cs
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\Koytz-RiotID-changer-v2_MarkupCompile.cache
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\Koytz-RiotID-changer-v2_MarkupCompile.lref
+D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.exe.config
+D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.exe
+D:\GitHub\Koytz-RiotID-changer-v2\bin\Debug\Koytz-RiotID-changer-v2.pdb
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\MainWindow.baml
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\Koytz-RiotID-changer-v2.g.resources
 D:\GitHub\Koytz-RiotID-changer-v2\obj\Debug\Koytz_RiotID_changer_v2.Properties.Resources.resources

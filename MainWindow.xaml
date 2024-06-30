@@ -47,10 +47,10 @@
             FontWeight="Medium"
             FontSize="15"
             HorizontalAlignment="Left" 
-            Height="40" 
+            Height="55" 
             Margin="65,111,0,0" 
             TextWrapping="Wrap" 
-            Text="Seu Riot ID é usado pelos jogadores para encontrar você no painel social de jogos da Riot."
+            Text="Seu Riot ID é usado por jogadores para encontrar você em todos os jogos da Riot no painel social."
             Foreground="#c6c6c6"
             VerticalAlignment="Top" 
             Width="354"
@@ -64,7 +64,7 @@
             Height="14" 
             Margin="121,268,0,0" 
             TextWrapping="Wrap" 
-            Text="RIOT ID PODE SER ALTERADO A CADA 90 DIAS"
+            Text="RIOT ID PODE SER ALTERADO A CADA 90 DIAS."
             Foreground="white"
             VerticalAlignment="Top" 
             Width="266"
@@ -73,12 +73,13 @@
         <TextBox
             x:Name="NewGameName"
             FontFamily="Mark Pro"
-            FontSize="14"
+            FontSize="20"
             FontWeight="Bold"
+            MaxLength="16"
             TextWrapping="NoWrap"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
-            Padding="17,0,0,0"
+            Padding="17,15,0,0"
             Height="74"
             Width="248"
             Margin="546,54,0,0" 
@@ -100,12 +101,13 @@
                                         <TextBlock
                                             x:Name="Placeholder"
                                             Text="GAME NAME"
+                                            FontSize="14"
                                             Foreground="#e74ff5"
                                             IsHitTestVisible="False"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Left"
                                             Margin="17,0,0,0"
-                                            Visibility="Collapsed"
+                                            Visibility="Hidden"
                                         />
                                         <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                                     </Grid>
@@ -131,45 +133,62 @@
         </TextBox>
 
         <TextBox
-             x:Name="NewTagLine"
-             Text="TAGLINE"
-             FontFamily="Mark Pro"
-             FontSize="14"
-             FontWeight="Bold"
-             TextWrapping="NoWrap"
-             TextChanged="NewTagLine_TextChanged"
-             VerticalContentAlignment="Center"
-             HorizontalContentAlignment="Left"
-             Padding="17,0,0,0"
-
-             Height="74"
-             Width="248"
-             Margin="810,54,0,0" 
-             HorizontalAlignment="Left"
-             VerticalAlignment="Top" Grid.ColumnSpan="2">
+            x:Name="NewTagLine"
+            FontFamily="Mark Pro"
+            FontSize="20"
+            FontWeight="Bold"
+            MaxLength="5"
+            TextWrapping="NoWrap"
+            VerticalContentAlignment="Center"
+            HorizontalContentAlignment="Left"
+            Padding="35,15,0,0"
+            Height="74"
+            Margin="810,54,63,0"
+            VerticalAlignment="Top" 
+            Grid.ColumnSpan="2">
 
             <TextBox.Style>
                 <Style TargetType="TextBox">
-                    <Setter Property="Foreground" Value="#e74ff5"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="TextBox">
                                 <Border
-                                    Name="Border"
+                                    x:Name="Border"
                                     CornerRadius="4" 
                                     BorderBrush="#472748" 
                                     BorderThickness="2" 
                                     Background="#382738">
-                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                    <Grid>
+                                        <TextBlock
+                                            x:Name="Placeholder"
+                                            Text="TAGLINE"
+                                            FontSize="14"
+                                            Foreground="#e74ff5"
+                                            IsHitTestVisible="False"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="17,0,0,0"
+                                            Visibility="Hidden"
+                                        />
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                    </Grid>
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsKeyboardFocused" Value="True">
                                         <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="#d953e5"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="CaretBrush" Value="White"/>
                 </Style>
             </TextBox.Style>
         </TextBox>
@@ -334,8 +353,9 @@
         </Button>
 
         <TextBlock
+            x:Name="NewGameNameTitle"
             FontFamily="Mark Pro"
-            FontSize="10.5"
+            FontSize="11"
             FontWeight="Bold"
             HorizontalAlignment="Left" 
             Height="12" 
@@ -344,9 +364,100 @@
             Text="GAME NAME"
             Foreground="#b8b8b8"
             VerticalAlignment="Top"
-            />
+            Visibility="Hidden"
+        />
 
+        <TextBlock
+            x:Name="NewGameNameTitleNumberLength"
+            FontFamily="Mark Pro"
+            FontSize="11"
+            FontWeight="Bold"
+            HorizontalAlignment="Left" 
+            Height="12" 
+            Margin="769,67,0,0" 
+            TextWrapping="Wrap" 
+            Text=""
+            Foreground="#b8b8b8"
+            VerticalAlignment="Top"
+            Visibility="Hidden"
+        />
 
+        <TextBlock
+             x:Name="NewTaglineTitle"
+             FontFamily="Mark Pro"
+             FontSize="11"
+             FontWeight="Bold"
+             HorizontalAlignment="Left" 
+             Height="12" 
+             Margin="829,67,0,0" 
+             TextWrapping="Wrap" 
+             Text="TAGLINE"
+             Foreground="#b8b8b8"
+             VerticalAlignment="Top"
+             Visibility="Hidden"
+        />
+
+        <TextBlock
+            x:Name="NewTaglineNumberLength"
+            FontFamily="Mark Pro"
+            FontSize="11"
+            FontWeight="Bold"
+            HorizontalAlignment="Left" 
+            Height="12" 
+            Margin="58,67,0,0" 
+            TextWrapping="Wrap" 
+            Text="a"
+            Foreground="#b8b8b8"
+            VerticalAlignment="Top" 
+            Grid.Column="1"
+            Visibility="Hidden"
+        />
+
+        <TextBlock
+             x:Name="HashtagNewTagline"
+             FontFamily="Mark Pro"
+             FontSize="20"
+             FontWeight="Bold"
+             HorizontalAlignment="Left" 
+             Height="20" 
+             Margin="828,87,0,0"
+             TextWrapping="Wrap" 
+             Text="#"
+             Foreground="#b8b8b8"
+             VerticalAlignment="Top"
+             Visibility="Hidden"
+        />
+
+        <Button
+            x:Name="GenerateRandomTaglineButton"
+            Click="GenerateRandomTagline"
+            Margin="35,85,0,0"
+            Background="Transparent" 
+            Grid.Column="1"
+            BorderThickness="0"
+            Padding="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Cursor="Hand"
+            Visibility="Hidden">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Image Source="random.png" Width="27" Height="26"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Window>
