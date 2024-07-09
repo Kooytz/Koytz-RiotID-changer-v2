@@ -7,7 +7,6 @@ using System.Windows.Threading;
 
 namespace Koytz_RiotID_changer_v2 {
     public partial class MainWindow : Window {
-
         private DispatcherTimer focusTimer;
         private bool isGameNameFocused;
         private bool isTagLineFocused;
@@ -15,6 +14,11 @@ namespace Koytz_RiotID_changer_v2 {
         public MainWindow() {
             InitializeComponent();
             FocusTimer();
+            ModifyButtonStyle();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            ModifyButtonStyle();
         }
 
         private void FocusTimer() {
@@ -103,7 +107,6 @@ namespace Koytz_RiotID_changer_v2 {
                     NewTaglineTitle.Visibility = Visibility.Visible;
                     NewTaglineNumberLength.Visibility = Visibility.Visible;
                     NewTaglineTitle.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#b8b8b8"));
-                    GenerateRandomTaglineButton.Visibility = Visibility.Visible;
 
                     int maxLength = 5;
                     int remainingChars = maxLength - NewTagLine.Text.Length;
@@ -123,7 +126,6 @@ namespace Koytz_RiotID_changer_v2 {
                     }
                 } else {
                     NewTaglineNumberLength.Visibility = Visibility.Hidden;
-                    GenerateRandomTaglineButton.Visibility = Visibility.Hidden;
 
                     if (NewTagLine.Text.Length == 0) {
                         NewTaglineTitle.Visibility = Visibility.Hidden;
@@ -152,21 +154,49 @@ namespace Koytz_RiotID_changer_v2 {
             } else {
                 HashtagNewTagline.Visibility = Visibility.Hidden;
             }
-
-            if (GenerateRandomTaglineButton.Visibility == Visibility.Visible) {
-                //GenerateRandomTaglineButton.Click -= GenerateRandomTagline;
-                //GenerateRandomTaglineButton.Click += GenerateRandomTagline;
-            }
         }
 
-        /*private void GenerateRandomTagline(object sender, RoutedEventArgs e) {
-            Console.WriteLine("Clicado");
+        private void ModifyButtonStyle() {
+            Style buttonStyle = new Style(typeof(Button));
 
-            Random random = new Random();
-            int randomNumber = random.Next(1000, 10000);
-            NewTagLine.Text = randomNumber.ToString();
-            NewTagLine.Focus();
-        }*/
+            buttonStyle.Setters.Add(new Setter(Button.BorderThicknessProperty, new Thickness(2)));
+
+            if (NewGameName.Text.Length >= 3 && NewTagLine.Text.Length >= 3) {
+                buttonStyle.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#d13639"))));
+                buttonStyle.Setters.Add(new Setter(Button.ForegroundProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#f0f0f0"))));
+                buttonStyle.Setters.Add(new Setter(Button.BorderBrushProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#d13639"))));
+            } else {
+                buttonStyle.Setters.Add(new Setter(Button.BackgroundProperty, Brushes.Transparent));
+                buttonStyle.Setters.Add(new Setter(Button.ForegroundProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#525252"))));
+                buttonStyle.Setters.Add(new Setter(Button.BorderBrushProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#333131"))));
+            }
+
+            ControlTemplate template = new ControlTemplate(typeof(Button));
+            FrameworkElementFactory border = new FrameworkElementFactory(typeof(Border));
+            border.SetValue(Border.BackgroundProperty, new TemplateBindingExtension(Button.BackgroundProperty));
+            border.SetValue(Border.BorderBrushProperty, new TemplateBindingExtension(Button.BorderBrushProperty));
+            border.SetValue(Border.BorderThicknessProperty, new TemplateBindingExtension(Button.BorderThicknessProperty));
+            border.SetValue(Border.CornerRadiusProperty, new CornerRadius(4));
+
+            FrameworkElementFactory contentPresenter = new FrameworkElementFactory(typeof(ContentPresenter));
+            contentPresenter.SetValue(ContentPresenter.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+            contentPresenter.SetValue(ContentPresenter.VerticalAlignmentProperty, VerticalAlignment.Center);
+
+            border.AppendChild(contentPresenter);
+            template.VisualTree = border;
+            buttonStyle.Setters.Add(new Setter(Button.TemplateProperty, template));
+
+            Trigger mouseOverTrigger = new Trigger { Property = UIElement.IsMouseOverProperty, Value = true };
+
+            if (NewGameName.Text.Length >= 3 && NewTagLine.Text.Length >= 3) {
+                mouseOverTrigger.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c73033"))));
+                mouseOverTrigger.Setters.Add(new Setter(Button.BorderBrushProperty, new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c73033"))));
+            }
+
+            mouseOverTrigger.Setters.Add(new Setter(Button.CursorProperty, Cursors.Hand));
+            buttonStyle.Triggers.Add(mouseOverTrigger);
+            SaveButton.Style = buttonStyle;
+        }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e) {
         if (e.ChangedButton == MouseButton.Left)
